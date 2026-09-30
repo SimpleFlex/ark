@@ -118,7 +118,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="https://www.meteora.ag/dammv2/J6hZuN1sHNysdjQw9iW9VV54YmQnsCEbxDgRH3Xfrz65?referrer=universal-search"
+              href="https://jup.ag/tokens/3Ziv8YD4Uv7sqYsaECTrbeUCfwKKPpTQ1PhZmEvWjupx"
               target="_blank"
               className="btn-royal flex w-full items-center justify-center text-center"
             >

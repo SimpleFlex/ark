@@ -1,13 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Eyebrow, StatCard, FeatureCard, SectionTitle } from "../components/UI";
-
-const STATS = [
-  { value: "3k", label: "Market Cap" },
-  { value: "$0..312", label: "Current Price" },
-  { value: "50", label: "Holders" },
-  { value: "1.2B", label: "Total Supply" },
-];
+import { getTokenStats, fmtNum, fmtUsd, fmtPrice } from "../lib/token";
 
 const FEATURES = [
   {
@@ -32,7 +26,16 @@ const FEATURES = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const s = await getTokenStats();
+
+  const STATS = [
+    { value: fmtUsd(s?.mcap ?? null), label: "Market Cap" },
+    { value: fmtPrice(s?.price ?? null), label: "Current Price" },
+    { value: fmtNum(s?.holders ?? null), label: "Holders" },
+    { value: fmtNum(s?.supply ?? null), label: "Total Supply" },
+  ];
+
   return (
     <>
       <section className="relative overflow-hidden border-b border-line/60 px-6 pt-16 lg:px-10 lg:pt-20">
@@ -51,7 +54,7 @@ export default function HomePage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="https://www.meteora.ag/dammv2/J6hZuN1sHNysdjQw9iW9VV54YmQnsCEbxDgRH3Xfrz65?referrer=universal-search"
+                href="https://jup.ag/tokens/3Ziv8YD4Uv7sqYsaECTrbeUCfwKKPpTQ1PhZmEvWjupx"
                 target="_blank"
                 className="btn-royal"
               >
@@ -117,7 +120,7 @@ export default function HomePage() {
             Be part of something bigger. Buy, hold, and grow with us.
           </p>
           <Link
-            href="https://www.meteora.ag/dammv2/J6hZuN1sHNysdjQw9iW9VV54YmQnsCEbxDgRH3Xfrz65?referrer=universal-search"
+            href="https://jup.ag/tokens/3Ziv8YD4Uv7sqYsaECTrbeUCfwKKPpTQ1PhZmEvWjupx"
             target="_blank"
             className="btn-royal mt-8"
           >
